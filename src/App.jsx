@@ -1,17 +1,16 @@
-import React from 'react'
-import './index.css'
-
-
-
+import React from "react";
+import "./index.css";
+import Navbar from "./Components/Navbar";
+import Hero from "./Components/Home";
 
 function App() {
   return (
-    <div>
-      <h1 className="bg-blue-700">fdsfhklsdhf</h1>
-      <br />
-      
+    // main div of BEAUFORTE
+    <div className="">
+      <Navbar />
+      <Hero />
     </div>
   );
 }
 
-export default App
+export default App;
