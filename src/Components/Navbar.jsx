@@ -32,11 +32,11 @@ function Navbar() {
           </ul>
         </div>
         {/* navbar hamburger */}
-        <div className="lg:hidden block cursor-pointer">
+        <div className="md:hidden block cursor-pointer">
           <i class="ri-menu-3-line text-3xl " onClick={sidebaropen}></i>
         </div>
       </nav>
-      {/* ------------side baaaaaaaar------- */}
+  
       {/* sidebar */}
       <div
         className={`fixed  bg-white top-0 right-0 w-full h-[50%] flex justify-center pt-14 text-center ${
