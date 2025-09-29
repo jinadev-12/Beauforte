@@ -14,7 +14,7 @@ function Navbar() {
     // main div
     <div className="top-0 mt-4 fixed w-full font-playfair z-50">
       {/* container */}
-      <nav className=" py-3 pl-4 pr-7  max-w-[1800px] w-[90%] mx-auto flex justify-between items-center  rounded-sm  text-gray-400">
+      <nav className=" py-3 pr-2  max-w-[1800px] w-[90%] mx-auto flex justify-between items-center  rounded-sm  text-gray-400">
         {/* navbar logo */}
         <div className="flex items-center ">
           <img src={logoBlack} className="w-10 h-12" />

@@ -1,11 +1,75 @@
 import React from 'react'
+import bag from "../Assets/bag-explore.png";
+import perfume from "../Assets/perfume-explore.jpg";
+import video from "../Assets/video-explore.mp4";
+import shambo from "../Assets/shambo.jpg";
+
+
+
 
 function Explore() {
   return (
-    <div>
-        
+    // Explore
+    <div className=" bg-[#b3b6b8]">
+      {/* Container */}
+      <div className="w-[90%] m-auto pt-12 max-w-[1800px] pb-20">
+        {/* heading and paragrapgh */}
+        <div className=" text-center  flex flex-col gap-7">
+          <h1 className="font-playfair text-4xl font-medium md:text-5xl lg:text-6xl max-w-[1000px]  m-auto">
+            Exclusivity in Every Detail,Timeless Style in Every Wear
+          </h1>
+          <p className="font-lato text-gray-900  leading-relaxed tracking-wider lg:text-lg">
+            Every piece in our collection is a testament to meticulous
+            craftsmanship and thoughtful design. From finest materials to the
+            precision in every stitch.
+          </p>
+        </div>
+
+        {/* grid-container */}
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-3 h-[1200px] md:h-[700px] md:grid-rows-2 mt-16 ">
+          {/* Container-A */}
+          <div
+            className=" md:col-span-1 md:row-span-1 bg-center bg-cover bg-no-repeat rounded-xl"
+            style={{ backgroundImage: `url(${bag})` }}
+          ></div>
+
+          {/* Container-B */}
+          <div
+            className="md:col-span-2 md:row-span-1 bg-center bg-cover bg-no-repeat"
+            style={{ backgroundImage: `url(${perfume})` }}
+          ></div>
+
+          {/* Container-C */}
+          <div
+            className="md:col-span-2 md:row-span-1 bg-center bg-cover bg-no-repeat"
+            style={{ backgroundImage: `url(${shambo})` }}
+          ></div>
+
+          {/* Container-D */}
+          <div className="md:col-span-1 md:row-span-1 relative bg-cover bg-center rounded-xl overflow-hidden">
+            <video
+              className=" absolute top-0 left-0 object-cover h-full w-full object-center -z-0"
+              src={video} // if video is in public folder
+              autoPlay
+              loop
+              muted
+              playsInline
+            />
+            {/* overlay */}
+            <div className="absolute inset-0 bg-black/60 z-10"></div>
+
+            {/* button */}
+            <div className="relative z-50 flex justify-center items-center h-full">
+              <button className="  bg-white px-4 py-3 md:text-lg  rounded-lg">
+                Learn More ->{" "}
+              </button>
+              {/* <div className='w-full absolute h-1 bg-[#003ee933]'></div> */}
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Explore
