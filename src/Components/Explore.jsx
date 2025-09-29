@@ -3,6 +3,7 @@ import bag from "../Assets/bag-explore.png";
 import perfume from "../Assets/perfume-explore.jpg";
 import shambo from "../Assets/shambo.jpg";
 
+// things to add 1.hover , 2 button underline
 
 
 
@@ -27,24 +28,31 @@ function Explore() {
         {/* grid-container */}
         <div className="grid grid-cols-1 gap-2 md:grid-cols-3 h-[1200px] md:h-[700px] md:grid-rows-2 mt-16 ">
           {/* Container-A */}
-          <div
-            className=" md:col-span-1 md:row-span-1 bg-center bg-cover bg-no-repeat rounded-xl"
-            style={{ backgroundImage: `url(${bag})` }}
-          ></div>
+          <div className="md:col-span-1 md:row-span-1 overflow-hidden rounded-xl">
+            <div
+              className="w-full h-full  bg-center bg-cover bg-no-repeat transition-transform duration-[1000ms] ease-in-out transform hover:scale-110 "
+              style={{ backgroundImage: `url(${bag})` }}
+            ></div>
+          </div>
 
           {/* Container-B */}
-          <div
-            className="md:col-span-2 md:row-span-1 bg-center bg-cover bg-no-repeat rounded-xl md:rounded-none"
-            style={{ backgroundImage: `url(${perfume})` }}
-          ></div>
+          <div className="md:col-span-2 md:row-span-1 overflow-hidden rounded-xl md:rounded-none">
+            <div
+              className="w-full h-full  bg-center bg-cover bg-no-repeat duration-[1000ms] ease-in-out transition-transform transform hover:scale-110 "
+              style={{ backgroundImage: `url(${perfume})` }}
+            ></div>
+          </div>
 
           {/* Container-C */}
-          <div
-            className="md:col-span-2 md:row-span-1 bg-center bg-cover bg-no-repeat rounded-xl md:rounded-none"
-            style={{ backgroundImage: `url(${shambo})` }}
-          ></div>
+          <div className="md:col-span-2 md:row-span-1 overflow-hidden rounded-xl md:rounded-none">
+            <div
+              className="w-full h-full  bg-center bg-cover bg-no-repeat transition-transform duration-[1000ms] ease-in-out transform hover:scale-110 "
+              style={{ backgroundImage: `url(${shambo})` }}
+            ></div>
+          </div>
 
           {/* Container-D */}
+
           <div className="md:col-span-1 md:row-span-1 relative bg-cover bg-center rounded-xl overflow-hidden">
             <video
               className=" absolute top-0 left-0 object-cover h-full w-full object-center -z-0"
@@ -60,7 +68,7 @@ function Explore() {
 
             {/* button */}
             <div className="relative z-50 flex justify-center items-center h-full">
-              <button className="  bg-white px-4 py-3 md:text-lg  rounded-lg">
+              <button className="  bg-white px-4 py-3 md:text-lg  rounded-lg hover:scale-95">
                 Learn More ->
               </button>
               {/* <div className='w-full absolute h-1 bg-[#003ee933]'></div> */}
