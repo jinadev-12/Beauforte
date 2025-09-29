@@ -1,7 +1,6 @@
 import React from 'react'
 import bag from "../Assets/bag-explore.png";
 import perfume from "../Assets/perfume-explore.jpg";
-import video from "../Assets/video-explore.mp4";
 import shambo from "../Assets/shambo.jpg";
 
 
@@ -49,7 +48,8 @@ function Explore() {
           <div className="md:col-span-1 md:row-span-1 relative bg-cover bg-center rounded-xl overflow-hidden">
             <video
               className=" absolute top-0 left-0 object-cover h-full w-full object-center -z-0"
-              src={video} // if video is in public folder
+              src="/video-explore.mp4"
+              // if video is in public folder
               autoPlay
               loop
               muted
@@ -61,7 +61,7 @@ function Explore() {
             {/* button */}
             <div className="relative z-50 flex justify-center items-center h-full">
               <button className="  bg-white px-4 py-3 md:text-lg  rounded-lg">
-                Learn More ->{" "}
+                Learn More ->
               </button>
               {/* <div className='w-full absolute h-1 bg-[#003ee933]'></div> */}
             </div>
