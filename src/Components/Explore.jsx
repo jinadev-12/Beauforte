@@ -35,13 +35,13 @@ function Explore() {
 
           {/* Container-B */}
           <div
-            className="md:col-span-2 md:row-span-1 bg-center bg-cover bg-no-repeat"
+            className="md:col-span-2 md:row-span-1 bg-center bg-cover bg-no-repeat rounded-xl md:rounded-none"
             style={{ backgroundImage: `url(${perfume})` }}
           ></div>
 
           {/* Container-C */}
           <div
-            className="md:col-span-2 md:row-span-1 bg-center bg-cover bg-no-repeat"
+            className="md:col-span-2 md:row-span-1 bg-center bg-cover bg-no-repeat rounded-xl md:rounded-none"
             style={{ backgroundImage: `url(${shambo})` }}
           ></div>
 
