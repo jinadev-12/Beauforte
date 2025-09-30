@@ -36,7 +36,7 @@ function FAQ() {
   };
 
   return (
-    <div className="py-20 px-8 md:px-20 lg:px-32 font-lato bg-white">
+    <div id="FAQ" className="py-20 px-8 md:px-20 lg:px-32 font-lato bg-white">
       {/* Top full-width line */}
       <div className="w-full border-t border-gray-300 mb-10"></div>
       <div className="max-w-[1800px] mx-auto ">

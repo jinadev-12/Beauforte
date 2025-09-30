@@ -126,7 +126,7 @@ function Explore() {
 
   return (
     // Explore
-    <div ref={exploreRef} className=" bg-[#fff]">
+    <div ref={exploreRef} id="" className=" bg-[#fff]">
       {/* Container */}
       <div className="w-[90%] m-auto pt-12 max-w-[1800px] pb-20">
         {/* heading and paragrapgh */}

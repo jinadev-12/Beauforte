@@ -7,13 +7,15 @@ import purse from "../Assets/product-purse.png";
 
 function Products() {
   return (
-    <div className="pt-28 pb-16 font-lato">
+    <div id="Products" className="pt-28 pb-16 font-lato">
       {/* container */}
       <div className="flex flex-col gap-12 px-8 max-w-[1800px] mx-auto">
         {/* head */}
         <div className="flex items-start justify-between">
           <div>
-            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-playfair">OUR PRODUCTS</h3>
+            <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-playfair">
+              OUR PRODUCTS
+            </h3>
             <p className="texl-sm md:text-base font-light">All collection</p>
           </div>
           <button className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition-colors">

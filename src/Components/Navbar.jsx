@@ -124,7 +124,7 @@ function Navbar() {
               <a href="#FAQ">FAQ</a>
             </li>
             <li>
-              <a href="#Contact Us">Contact Us</a>
+              <a href="#Contact-Us">Contact Us</a>
             </li>
           </ul>
         </div>
@@ -161,22 +161,22 @@ function Navbar() {
 
         <ul className="space-y-6 text-xl">
           <li>
-            <a href="#" onClick={() => setIsOpen(false)}>
+            <a href="#Home" onClick={() => setIsOpen(false)}>
               Home
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => setIsOpen(false)}>
+            <a href="#Products" onClick={() => setIsOpen(false)}>
               Products
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => setIsOpen(false)}>
+            <a href="#FAQ" onClick={() => setIsOpen(false)}>
               FAQ
             </a>
           </li>
           <li>
-            <a href="#" onClick={() => setIsOpen(false)}>
+            <a href="#Contact-Us" onClick={() => setIsOpen(false)}>
               Contact Us
             </a>
           </li>
