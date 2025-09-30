@@ -10,6 +10,7 @@ export default {
         playfair: ["Playfair Display", "serif"],
         lato: ["Lato", "sans-serif"],
         bodoni: ["Bodoni Moda", "serif"],
+        poppins:['Poppins','serif']
       },
     },
   },
