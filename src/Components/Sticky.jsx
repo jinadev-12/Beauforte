@@ -4,7 +4,7 @@ import stickyComponent from "../Assets/sticky-image.png";
 import perfume from "../Assets/sticky-perfume.png";
 import bag from "../Assets/sticky-bag.png";
 import belt from "../Assets/sticky-belt.png";
-import jacket from "../Assets/jacket.png";
+import jacket from "../Assets/sticky-md-jacket.png";
 
 
 
@@ -12,7 +12,7 @@ function Sticky() {
   return (
     <div className="max-w-[1800px] mx-auto">
       {/* container */}
-      <div className="flex flex-col md:flex-row gap-0 md:gap-2 mt-16">
+      <div className="flex flex-col md:flex-row gap-0 md:gap-2 mt-16 ">
         {/* LEFT: sticky image */}
         <div className="w-full object-contain md:w-1/2 md:relative">
           <div className="md:sticky md:top-[5vh] md:h-[90vh] ">
@@ -25,7 +25,7 @@ function Sticky() {
         </div>
 
         {/* RIGHT: first big image (bag) */}
-        <div className="w-full md:w-1/2">
+        <div className="w-full md:w-1/2 pb-16">
           <div className="h-[100vh] md:h-[90vh]">
             <img
               src={bag}
