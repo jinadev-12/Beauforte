@@ -114,10 +114,18 @@ function Navbar() {
         {/* desktop links: visible md and up */}
         <div className="hidden md:block">
           <ul className="flex gap-8 text-lg font-lato">
-            <li>Home</li>
-            <li>Products</li>
-            <li>FAQ</li>
-            <li>Contact Us</li>
+            <li>
+              <a href="#Home">Home</a>
+            </li>
+            <li>
+              <a href="#Products">Products</a>
+            </li>
+            <li>
+              <a href="#FAQ">FAQ</a>
+            </li>
+            <li>
+              <a href="#Contact Us">Contact Us</a>
+            </li>
           </ul>
         </div>
 

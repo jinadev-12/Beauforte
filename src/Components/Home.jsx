@@ -3,7 +3,7 @@ import heroBG from "../Assets/heroBG.png";
 
 function Hero() {
   return (
-    <div className="relative h-screen w-full font-playfair ">
+    <div id="Home" className="relative h-screen w-full font-playfair ">
       {/* Background */}
       <img
         src={heroBG}
