@@ -5,6 +5,7 @@ import Hero from "./Components/Home";
 import Explore from "./Components/Explore";
 import Sticky from "./Components/Sticky";
 import Products from "./Components/Products";
+import FAQ from "./Components/FAQ";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Explore/>
       <Sticky />
       <Products />
+      <FAQ />
     </div>
   );
 }
