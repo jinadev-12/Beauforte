@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 import bag from "../Assets/bag-explore.png";
 import perfume from "../Assets/perfume-explore.jpg";
 import shambo from "../Assets/shambo.jpg";
 
 // things to add 1.hover , 2 button underline
-
-
 
 function Explore() {
   return (
@@ -28,7 +26,7 @@ function Explore() {
         {/* grid-container */}
         <div className="grid grid-cols-1 gap-2 md:grid-cols-3 h-[1200px] md:h-[700px] md:grid-rows-2 mt-16 ">
           {/* Container-A */}
-          <div className="md:col-span-1 md:row-span-1 overflow-hidden rounded-xl">
+          <div className="md:col-span-1 md:row-span-1 overflow-hidden rounded-xl order-2 md:order-1">
             <div
               className="w-full h-full  bg-center bg-cover bg-no-repeat transition-transform duration-[1000ms] ease-in-out transform hover:scale-110 "
               style={{ backgroundImage: `url(${bag})` }}
@@ -36,7 +34,7 @@ function Explore() {
           </div>
 
           {/* Container-B */}
-          <div className="md:col-span-2 md:row-span-1 overflow-hidden rounded-xl md:rounded-none">
+          <div className="md:col-span-2 md:row-span-1 overflow-hidden rounded-xl md:rounded-none order-1 md:order-2">
             <div
               className="w-full h-full  bg-center bg-cover bg-no-repeat duration-[1000ms] ease-in-out transition-transform transform hover:scale-110 "
               style={{ backgroundImage: `url(${perfume})` }}
@@ -44,7 +42,7 @@ function Explore() {
           </div>
 
           {/* Container-C */}
-          <div className="md:col-span-2 md:row-span-1 overflow-hidden rounded-xl md:rounded-none">
+          <div className="md:col-span-2 md:row-span-1 overflow-hidden rounded-xl md:rounded-none order-3">
             <div
               className="w-full h-full  bg-center bg-cover bg-no-repeat transition-transform duration-[1000ms] ease-in-out transform hover:scale-110 "
               style={{ backgroundImage: `url(${shambo})` }}
@@ -52,7 +50,7 @@ function Explore() {
           </div>
 
           {/* Container-D */}
-          <div className="md:col-span-1 md:row-span-1 overflow-hidden rounded-xl">
+          <div className="md:col-span-1 md:row-span-1 overflow-hidden rounded-xl order-4">
             <div className=" relative bg-cover bg-center  overflow-hidden h-full w-full  transition-transform duration-[1000ms] ease-in-out transform hover:scale-110">
               <video
                 className=" absolute top-0 left-0 object-cover h-full w-full object-center -z-0"
@@ -81,4 +79,4 @@ function Explore() {
   );
 }
 
-export default Explore
+export default Explore;
