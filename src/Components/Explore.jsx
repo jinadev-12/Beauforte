@@ -67,7 +67,7 @@ function Explore() {
               {/* button */}
               <div className="relative z-50 flex justify-center items-center h-full">
                 <button className="  bg-white px-4 py-3 md:text-lg  rounded-lg hover:scale-95">
-                  Learn More ->
+                  Learn More <i class="ri-arrow-right-line"></i>
                 </button>
                 {/* <div className='w-full absolute h-1 bg-[#003ee933]'></div> */}
               </div>
