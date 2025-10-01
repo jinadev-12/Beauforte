@@ -6,6 +6,7 @@ import Explore from "./Components/Explore";
 import Sticky from "./Components/Sticky";
 import Products from "./Components/Products";
 import FAQ from "./Components/FAQ";
+import Footer from "./Components/footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Sticky />
       <Products />
       <FAQ />
+      <Footer />
     </div>
   );
 }
