@@ -121,7 +121,7 @@ function Products() {
             </h3>
             <p className="texl-sm md:text-base font-light">All collection</p>
           </div>
-          <button className="bg-black text-white px-6 py-3 rounded hover:bg-gray-800 transition-colors">
+          <button className="bg-black text-white px-6 py-3  hover:bg-gray-800 transition-colors">
             SHOP NOW
           </button>
         </div>
