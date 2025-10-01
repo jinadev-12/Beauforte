@@ -1,59 +1,11 @@
-import React, { useEffect, useRef,useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
-function FAQ() {
+// components/FAQ.jsx
+import React, { useEffect, useRef, useState } from "react";
 
-  // gsap animation
-
- const faqRef = useRef(null);
-  const faqtitleRef = useRef(null);
-    const mainRef = useRef(null);
-    const questionRefs = useRef([]);
-
-
-
-
- useEffect(() => {
-   const ctx = gsap.context(() => {
-     // title
-
-     gsap.fromTo(
-       faqtitleRef.current,
-       { scale: 1.06, autoAlpha: 0 }, // start
-       {
-         scale: 1.0,
-         autoAlpha: 1, // end
-         duration: 1,
-         scrollTrigger: {
-           trigger: faqRef.current,
-           start: "top 80%",
-         },
-       }
-     );
-
-     // Animate each question
-     questionRefs.current.forEach((el) => {
-       gsap.fromTo(
-         el,
-         { y: 30, autoAlpha: 0 },
-         {
-           y: 0,
-           autoAlpha: 1,
-           duration: 1,
-           scrollTrigger: {
-             trigger: el,
-             start: "top 80%",
-           },
-         }
-       );
-     });
-   }, faqRef);
-   return () => ctx.revert();
- }, []);
-
-
-
+export default function FAQ() {
+  const faqRef = useRef(null);
+  const titleRef = useRef(null);
+  const questionRefs = useRef([]);
+  const answerRefs = useRef([]);
   const [openIndex, setOpenIndex] = useState(null);
 
   const faqs = [
@@ -77,76 +29,156 @@ function FAQ() {
       answer:
         "Yes, you may return or exchange unused items within 14 days of delivery, provided they are in original condition and packaging.",
     },
-    {
-      question: "Do you release limited edition collections?",
-      answer:
-        "Yes. We frequently launch exclusive limited editions of bags, heels, and perfumes — available only in small quantities.",
-    },
   ];
 
-  const toggleFAQ = (index) => {
-    setOpenIndex(openIndex === index ? null : index);
+  useEffect(() => {
+    // client-only import to avoid SSR issues (Next/Vercel)
+    let ctx;
+    let gsapInstance;
+    (async () => {
+      const { gsap } = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsap.registerPlugin(ScrollTrigger);
+      gsapInstance = gsap;
+
+      ctx = gsap.context(() => {
+        // Title entrance
+        gsap.fromTo(
+          titleRef.current,
+          { scale: 1.06, autoAlpha: 0 },
+          {
+            scale: 1,
+            autoAlpha: 1,
+            duration: 1,
+            scrollTrigger: {
+              trigger: faqRef.current,
+              start: "top 80%",
+            },
+          }
+        );
+
+        // Ensure answers start collapsed
+        answerRefs.current.forEach((ans) =>
+          gsap.set(ans, { height: 0, opacity: 0, overflow: "hidden" })
+        );
+
+        // Animate each question into view
+        questionRefs.current.forEach((el) => {
+          gsap.fromTo(
+            el,
+            { y: 30, autoAlpha: 0 },
+            {
+              y: 0,
+              autoAlpha: 1,
+              duration: 0.8,
+              scrollTrigger: {
+                trigger: el,
+                start: "top 90%",
+              },
+            }
+          );
+        });
+      }, faqRef);
+    })();
+
+    return () => {
+      try {
+        ctx?.revert();
+      } catch (e) {}
+    };
+  }, []);
+
+  // Toggle FAQ answer open/close with GSAP animation
+  const toggle = async (idx) => {
+    const ans = answerRefs.current[idx];
+    if (!ans) return;
+
+    // lazy-import gsap for the toggle too (should be already loaded, but safe)
+    const { gsap } = await import("gsap");
+
+    const isOpen = openIndex === idx;
+    if (isOpen) {
+      // close
+      gsap.to(ans, {
+        height: 0,
+        opacity: 0,
+        duration: 0.35,
+        ease: "power2.out",
+      });
+      setOpenIndex(null);
+    } else {
+      // close previous if any
+      if (openIndex !== null) {
+        const prev = answerRefs.current[openIndex];
+        if (prev) gsap.to(prev, { height: 0, opacity: 0, duration: 0.25 });
+      }
+      // open clicked
+      // set height to auto by measuring scrollHeight for smooth animation
+      const targetHeight = ans.scrollHeight;
+      gsap.to(ans, {
+        height: targetHeight,
+        opacity: 1,
+        duration: 0.35,
+        ease: "power2.out",
+      });
+      setOpenIndex(idx);
+      // after animation, set height to 'auto' so content can grow naturally
+      gsap.delayedCall(0.36, () => gsap.set(ans, { height: "auto" }));
+    }
   };
 
   return (
     <div
-      ref={faqRef}
       id="FAQ"
+      ref={faqRef}
       className="py-20 px-8 md:px-20 lg:px-32 font-lato bg-white"
     >
-      {/* Top full-width line */}
-      <div className="w-full border-t border-gray-300 mb-10"></div>
+      <div className="w-full border-t border-gray-300 mb-10" />
       <div className="max-w-[1800px] mx-auto ">
-        {/* Heading */}
         <h2
-          ref={faqtitleRef}
+          ref={titleRef}
           className="text-3xl md:text-4xl lg:text-5xl text-center mb-10 text-gray-900 tracking-wide p-4 font-playfair"
         >
           Frequently Asked <br className="hidden lg:block" />
           Questions
         </h2>
 
-        {/* FAQ items */}
-        <div ref={mainRef} className="space-y-4">
-          {faqs.map((faq, index) => (
-            <div
-              key={index}
-              className="border-b border-gray-200 cursor-pointer"
-              onClick={() => toggleFAQ(index)}
-            >
-              {/* Question row */}
-              <div className="flex items-center justify-between py-4">
-                <h3
-                  ref={(el) => (questionRefs.current[index] = el)}
-                  className="text-base md:text-lg font-light text-gray-900"
-                >
-                  {faq.question}
-                </h3>
-                <span className="text-gray-500 text-lg">
-                  {openIndex === index ? "−" : "+"}
-                </span>
-              </div>
-
-              {/* Animated Answer */}
+        <div className="space-y-4">
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
               <div
-                className={`grid transition-all duration-500 ease-in-out ${
-                  openIndex === index
-                    ? "grid-rows-[1fr] opacity-100"
-                    : "grid-rows-[0fr] opacity-0"
-                }`}
+                key={index}
+                className="faq-item border-b border-gray-100 py-4"
               >
-                <div className="overflow-hidden">
-                  <p className="text-sm text-gray-600 leading-relaxed pb-3">
-                    {faq.answer}
-                  </p>
+                <div className="flex items-center justify-between py-2">
+                  <button
+                    ref={(el) => (questionRefs.current[index] = el)}
+                    onClick={() => toggle(index)}
+                    className="text-left w-full flex items-center justify-between focus:outline-none"
+                    aria-expanded={openIndex === index}
+                    aria-controls={`faq-answer-${index}`}
+                  >
+                    <h3 className="text-base md:text-lg font-light text-gray-900">
+                      {faq.question}
+                    </h3>
+                    <span className="ml-4 text-gray-500 text-lg">
+                      {openIndex === index ? "−" : "+"}
+                    </span>
+                  </button>
+                </div>
+
+                <div
+                  id={`faq-answer-${index}`}
+                  ref={(el) => (answerRefs.current[index] = el)}
+                  className="faq-answer overflow-hidden"
+                >
+                  <div className="py-2 text-gray-700">{faq.answer}</div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
-export default FAQ;
