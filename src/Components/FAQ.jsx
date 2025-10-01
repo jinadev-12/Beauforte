@@ -6,14 +6,6 @@ export default function FAQ() {
   const titleRef = useRef(null);
   const questionRefs = useRef([]);
   const answerRefs = useRef([]);
-// components/FAQ.jsx
-import React, { useEffect, useRef, useState } from "react";
-
-export default function FAQ() {
-  const faqRef = useRef(null);
-  const titleRef = useRef(null);
-  const questionRefs = useRef([]);
-  const answerRefs = useRef([]);
   const [openIndex, setOpenIndex] = useState(null);
 
   const faqs = [
@@ -40,17 +32,14 @@ export default function FAQ() {
   ];
 
   useEffect(() => {
-    // client-only import to avoid SSR issues (Next/Vercel)
     let ctx;
-    let gsapInstance;
     (async () => {
       const { gsap } = await import("gsap");
       const { ScrollTrigger } = await import("gsap/ScrollTrigger");
       gsap.registerPlugin(ScrollTrigger);
-      gsapInstance = gsap;
 
       ctx = gsap.context(() => {
-        // Title entrance
+        // Title animation
         gsap.fromTo(
           titleRef.current,
           { scale: 1.06, autoAlpha: 0 },
@@ -65,12 +54,12 @@ export default function FAQ() {
           }
         );
 
-        // Ensure answers start collapsed
+        // Collapse all answers initially
         answerRefs.current.forEach((ans) =>
           gsap.set(ans, { height: 0, opacity: 0, overflow: "hidden" })
         );
 
-        // Animate each question into view
+        // Animate questions on scroll
         questionRefs.current.forEach((el) => {
           gsap.fromTo(
             el,
@@ -89,22 +78,16 @@ export default function FAQ() {
       }, faqRef);
     })();
 
-    return () => {
-      try {
-        ctx?.revert();
-      } catch (e) {}
-    };
+    return () => ctx?.revert();
   }, []);
 
-  // Toggle FAQ answer open/close with GSAP animation
   const toggle = async (idx) => {
     const ans = answerRefs.current[idx];
     if (!ans) return;
 
-    // lazy-import gsap for the toggle too (should be already loaded, but safe)
     const { gsap } = await import("gsap");
-
     const isOpen = openIndex === idx;
+
     if (isOpen) {
       // close
       gsap.to(ans, {
@@ -115,13 +98,12 @@ export default function FAQ() {
       });
       setOpenIndex(null);
     } else {
-      // close previous if any
+      // close previous
       if (openIndex !== null) {
         const prev = answerRefs.current[openIndex];
         if (prev) gsap.to(prev, { height: 0, opacity: 0, duration: 0.25 });
       }
-      // open clicked
-      // set height to auto by measuring scrollHeight for smooth animation
+      // open current
       const targetHeight = ans.scrollHeight;
       gsap.to(ans, {
         height: targetHeight,
@@ -130,7 +112,6 @@ export default function FAQ() {
         ease: "power2.out",
       });
       setOpenIndex(idx);
-      // after animation, set height to 'auto' so content can grow naturally
       gsap.delayedCall(0.36, () => gsap.set(ans, { height: "auto" }));
     }
   };
@@ -145,7 +126,6 @@ export default function FAQ() {
       <div className="max-w-[1800px] mx-auto ">
         <h2
           ref={titleRef}
-          ref={titleRef}
           className="text-3xl md:text-4xl lg:text-5xl text-center mb-10 text-gray-900 tracking-wide p-4 font-playfair"
         >
           Frequently Asked <br className="hidden lg:block" />
@@ -153,47 +133,34 @@ export default function FAQ() {
         </h2>
 
         <div className="space-y-4">
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div
-                key={index}
-                className="faq-item border-b border-gray-100 py-4"
-              >
-                <div className="flex items-center justify-between py-2">
-                  <button
-                    ref={(el) => (questionRefs.current[index] = el)}
-                    onClick={() => toggle(index)}
-                    className="text-left w-full flex items-center justify-between focus:outline-none"
-                    aria-expanded={openIndex === index}
-                    aria-controls={`faq-answer-${index}`}
-                  >
-                    <h3 className="text-base md:text-lg font-light text-gray-900">
-                      {faq.question}
-                    </h3>
-                    <span className="ml-4 text-gray-500 text-lg">
-                      {openIndex === index ? "−" : "+"}
-                    </span>
-                  </button>
-                </div>
-
-                <div
-                  id={`faq-answer-${index}`}
-                  ref={(el) => (answerRefs.current[index] = el)}
-                  className="faq-answer overflow-hidden"
+          {faqs.map((faq, index) => (
+            <div key={index} className="faq-item border-b border-gray-100 py-4">
+              <div className="flex items-center justify-between py-2">
+                <button
+                  ref={(el) => (questionRefs.current[index] = el)}
+                  onClick={() => toggle(index)}
+                  className="text-left w-full flex items-center justify-between focus:outline-none"
+                  aria-expanded={openIndex === index}
+                  aria-controls={`faq-answer-${index}`}
                 >
-                  <div className="py-2 text-gray-700">{faq.answer}</div>
-                <div
-                  id={`faq-answer-${index}`}
-                  ref={(el) => (answerRefs.current[index] = el)}
-                  className="faq-answer overflow-hidden"
-                >
-                  <div className="py-2 text-gray-700">{faq.answer}</div>
-                </div>
+                  <h3 className="text-base md:text-lg font-light text-gray-900">
+                    {faq.question}
+                  </h3>
+                  <span className="ml-4 text-gray-500 text-lg">
+                    {openIndex === index ? "−" : "+"}
+                  </span>
+                </button>
               </div>
-            ))}
-          </div>
-            ))}
-          </div>
+
+              <div
+                id={`faq-answer-${index}`}
+                ref={(el) => (answerRefs.current[index] = el)}
+                className="faq-answer overflow-hidden"
+              >
+                <div className="py-2 text-gray-700">{faq.answer}</div>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
