@@ -1,17 +1,121 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+import heroBG from "../Assets/heroBG.png";
 import perfume from "../Assets/product-perfume.png";
 import shoe from "../Assets/product-shoe.png";
 import bag from "../Assets/product-bag.png";
 import purse from "../Assets/product-purse.png";
 
-
 function Products() {
+  const productsRef = useRef(null);
+  const titlepRef = useRef(null);
+  const product1 = useRef(null);
+  const product2 = useRef(null);
+  const product3 = useRef(null);
+  const product4 = useRef(null);
+  const container = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // title
+
+      gsap.fromTo(
+        titlepRef.current,
+        { scale: 1.06, autoAlpha: 0 }, // start
+        {
+          scale: 1.0,
+          autoAlpha: 1, // end
+          duration: 1,
+          scrollTrigger: {
+            trigger: productsRef.current,
+            start: "top 55%",
+          },
+        }
+      );
+
+      // product1
+
+      gsap.fromTo(
+        product1.current,
+        { y: -40, scale: 1.0, autoAlpha: 0 }, // start
+        {
+          y: 0,
+          scale: 1.0,
+          autoAlpha: 1, // end
+          duration: 1,
+          scrollTrigger: {
+            trigger: productsRef.current,
+            start: "top 55%",
+          },
+        }
+      );
+
+      // product2
+
+      gsap.fromTo(
+        product2.current,
+        { y: -40, scale: 1.06, autoAlpha: 0 }, // start
+        {
+          y: 0,
+          delay: 0.5,
+          scale: 1.0,
+          autoAlpha: 1, // end
+          duration: 1,
+          scrollTrigger: {
+            trigger: productsRef.current,
+            start: "top 55%",
+          },
+        }
+      );
+
+      // product3
+
+      gsap.fromTo(
+        product3.current,
+        { y: -40, scale: 1.06, autoAlpha: 0 }, // start
+        {
+          y: 0,
+          delay: 1.0,
+          scale: 1.0,
+          autoAlpha: 1, // end
+          duration: 1,
+          scrollTrigger: {
+            trigger: productsRef.current,
+            start: "top 55%",
+          },
+        }
+      );
+
+      // product4
+
+      gsap.fromTo(
+        product4.current,
+        { y: -40, scale: 1.06, autoAlpha: 0 }, // start
+        {
+          y: 0,
+          scale: 1.0,
+          delay:1.5,
+          autoAlpha: 1, // end
+          duration: 1,
+          scrollTrigger: {
+            trigger: productsRef.current,
+            start: "top 55%",
+          },
+        }
+      );
+
+
+    }, productsRef);
+  }, []);
+
   return (
-    <div id="Products" className="pt-28 pb-16 font-lato">
+    <div ref={productsRef} id="Products" className="pt-28 pb-16 font-lato">
       {/* container */}
       <div className="flex flex-col gap-12 px-8 max-w-[1800px] mx-auto">
         {/* head */}
-        <div className="flex items-start justify-between">
+        <div ref={titlepRef} className="flex items-start justify-between">
           <div>
             <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-playfair">
               OUR PRODUCTS
@@ -26,7 +130,7 @@ function Products() {
         {/* product wrapper */}
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {/* Product 1 */}
-          <div className="bg-white flex flex-col items-center">
+          <div ref={product1} className="bg-white flex flex-col items-center">
             <div className="w-full aspect-[3/4] overflow-hidden  mb-2">
               <img
                 src={perfume}
@@ -49,7 +153,7 @@ function Products() {
           </div>
 
           {/* Product 2 */}
-          <div className="bg-white flex flex-col items-center">
+          <div ref={product2} className="bg-white flex flex-col items-center">
             <div className="w-full aspect-[3/4] overflow-hidden  mb-3">
               <img
                 src={bag}
@@ -72,7 +176,7 @@ function Products() {
           </div>
 
           {/* Product 3 */}
-          <div className="bg-white flex flex-col items-center">
+          <div ref={product3} className="bg-white flex flex-col items-center">
             <div className="w-full aspect-[3/4] overflow-hidden  mb-3">
               <img
                 src={purse}
@@ -94,7 +198,7 @@ function Products() {
             </div>
           </div>
           {/* Product 4 */}
-          <div className="bg-white flex flex-col items-center">
+          <div ref={product4} className="bg-white flex flex-col items-center">
             <div className="w-full aspect-[3/4] overflow-hidden  mb-3">
               <img
                 src={shoe}
