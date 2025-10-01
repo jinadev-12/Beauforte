@@ -97,12 +97,12 @@ function Navbar() {
 
   return (
     <div
-      className={` overflow-x-hidden fixed top-0 left-0 right-0 w-full font-playfair z-50 transition-transform duration-500 ${
+      className={`bg-white overflow-x-hidden fixed top-0 left-0 right-0 w-full font-playfair z-50 transition-transform duration-500 ${
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >
       {/* navbar container */}
-      <nav className="py-3 pr-2 max-w-[1800px] w-[90%] mx-auto flex justify-between items-center rounded-sm text-gray-400 bg-transparent">
+      <nav className="py-3 pr-2 max-w-[1800px] w-[90%] mx-auto flex justify-between items-center rounded-sm text-black bg-transparent">
         {/* logo */}
         <div className="flex items-center">
           <img src={logoBlack} className="w-10 h-12" alt="Beauforte logo" />
