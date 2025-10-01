@@ -48,10 +48,13 @@ gsap.fromTo(
     }, sectionRef);
   }, []);
   return (
-    <div id="Home" className="relative h-screen w-full font-playfair ">
+    <div
+      id="Home"
+      className=" overflow-x-hidden relative h-screen w-full font-playfair "
+    >
       {/* Background */}
       <img
-      ref={mainRef}
+        ref={mainRef}
         src={heroBG}
         alt="Beauforte Luxury Background"
         className="absolute inset-0 -z-10 h-full w-full object-cover"
@@ -68,11 +71,9 @@ gsap.fromTo(
           <div>
             <div className="text-5xl md:text-7xl lg:text-9xl font-extralight text-gray-100">
               <span className="lg:relative lg:right-32">
-                
                 Timeless <br className="md:hidden" />
                 <span className="text-gray-500">Design,</span>
               </span>
-              
               <br className="hidden md:block" />
               Modern <br className="md:hidden" />
               Freedom.

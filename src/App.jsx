@@ -11,7 +11,7 @@ import Footer from "./Components/footer";
 function App() {
   return (
     // main div of BEAUFORTE
-    <div className="overflow-x-hidden">
+    <div className="">
       <Navbar />
       <Hero />
       <Explore/>

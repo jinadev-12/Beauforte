@@ -97,7 +97,7 @@ function Navbar() {
 
   return (
     <div
-      className={`fixed top-0 left-0 right-0 w-full font-playfair z-50 transition-transform duration-500 ${
+      className={` overflow-x-hidden fixed top-0 left-0 right-0 w-full font-playfair z-50 transition-transform duration-500 ${
         hidden ? "-translate-y-full" : "translate-y-0"
       }`}
     >

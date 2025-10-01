@@ -110,7 +110,11 @@ function Products() {
   }, []);
 
   return (
-    <div ref={productsRef} id="Products" className="pt-28 pb-16 font-lato">
+    <div
+      ref={productsRef}
+      id="Products"
+      className=" overflow-x-hidden pt-28 pb-16 font-lato"
+    >
       {/* container */}
       <div className="flex flex-col gap-12 px-8 max-w-[1800px] mx-auto">
         {/* head */}

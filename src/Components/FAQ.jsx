@@ -120,7 +120,7 @@ export default function FAQ() {
     <div
       id="FAQ"
       ref={faqRef}
-      className="py-20 px-8 md:px-20 lg:px-32 font-lato bg-white"
+      className=" overflow-x-hidden py-20 px-8 md:px-20 lg:px-32 font-lato bg-white"
     >
       <div className="w-full border-t border-gray-300 mb-10" />
       <div className="max-w-[1800px] mx-auto ">

@@ -126,9 +126,9 @@ function Explore() {
 
   return (
     // Explore
-    <div ref={exploreRef} id="" className=" bg-[#fff]">
+    <div ref={exploreRef} id="" className=" overflow-x-hidden bg-[#fff]">
       {/* Container */}
-      <div className="w-[90%] m-auto pt-12 max-w-[1800px] pb-20">
+      <div className=" w-[90%] m-auto pt-12 max-w-[1800px] pb-20">
         {/* heading and paragrapgh */}
         <div className=" text-center  flex flex-col gap-7">
           <h1
