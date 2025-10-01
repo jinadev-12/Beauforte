@@ -4,7 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 function FAQ() {
 
-  // gsap
+  // gsap animation
 
  const faqRef = useRef(null);
   const faqtitleRef = useRef(null);
