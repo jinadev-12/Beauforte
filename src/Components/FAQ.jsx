@@ -6,6 +6,14 @@ export default function FAQ() {
   const titleRef = useRef(null);
   const questionRefs = useRef([]);
   const answerRefs = useRef([]);
+// components/FAQ.jsx
+import React, { useEffect, useRef, useState } from "react";
+
+export default function FAQ() {
+  const faqRef = useRef(null);
+  const titleRef = useRef(null);
+  const questionRefs = useRef([]);
+  const answerRefs = useRef([]);
   const [openIndex, setOpenIndex] = useState(null);
 
   const faqs = [
@@ -137,6 +145,7 @@ export default function FAQ() {
       <div className="max-w-[1800px] mx-auto ">
         <h2
           ref={titleRef}
+          ref={titleRef}
           className="text-3xl md:text-4xl lg:text-5xl text-center mb-10 text-gray-900 tracking-wide p-4 font-playfair"
         >
           Frequently Asked <br className="hidden lg:block" />
@@ -173,8 +182,16 @@ export default function FAQ() {
                   className="faq-answer overflow-hidden"
                 >
                   <div className="py-2 text-gray-700">{faq.answer}</div>
+                <div
+                  id={`faq-answer-${index}`}
+                  ref={(el) => (answerRefs.current[index] = el)}
+                  className="faq-answer overflow-hidden"
+                >
+                  <div className="py-2 text-gray-700">{faq.answer}</div>
                 </div>
               </div>
+            ))}
+          </div>
             ))}
           </div>
         </div>
