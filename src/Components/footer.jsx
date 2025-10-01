@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
   return (
-    <div className="py-24 px-8 md:px-20 lg:px-32 font-lato bg-white">
+    <div id="Contact-Us" className="py-24 px-8 md:px-20 lg:px-32 font-lato bg-white">
       {/* container */}
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-16 max-w-[1800px] mx-auto leading-relaxed">
         {/* logo */}
