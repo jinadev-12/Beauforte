@@ -1,6 +1,5 @@
 import React from "react";
 
-import stickyComponent from "../Assets/sticky-image.png";
 import perfume from "../Assets/sticky-perfume.png";
 import bag from "../Assets/sticky-Lg.jpg";
 import belt from "../Assets/sticky-belt.png";
@@ -9,6 +8,8 @@ import jacket from "../Assets/sticky-md-jacket.png";
 
 
 function Sticky() {
+
+  
   return (
     <div className="max-w-[1800px] mx-auto">
       {/* container */}
@@ -103,6 +104,7 @@ function Sticky() {
             />
           </div>
         </div>
+        
       </div>
     </div>
   );
