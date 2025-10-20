@@ -214,10 +214,10 @@ function Explore() {
             className="md:col-span-1 md:row-span-1 overflow-hidden rounded-xl order-4"
           >
             <div className=" relative bg-cover bg-center  overflow-hidden h-full w-full  transition-transform duration-[1000ms] ease-in-out transform hover:scale-110">
+              {/* remove this video */}
               <video
                 className=" absolute top-0 left-0 object-cover h-full w-full object-center -z-0"
                 src="/video-explore.mp4"
-                // if video is in public folder
                 autoPlay
                 loop
                 muted

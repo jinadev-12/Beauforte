@@ -2,7 +2,7 @@ import React from "react";
 
 import stickyComponent from "../Assets/sticky-image.png";
 import perfume from "../Assets/sticky-perfume.png";
-import bag from "../Assets/sticky-bag.png";
+import bag from "../Assets/sticky-Lg.jpg";
 import belt from "../Assets/sticky-belt.png";
 import jacket from "../Assets/sticky-md-jacket.png";
 
@@ -16,11 +16,14 @@ function Sticky() {
         {/* LEFT: sticky image */}
         <div className="w-full object-contain md:w-1/2 md:relative">
           <div className="md:sticky md:top-[5vh] md:h-[90vh] ">
-            <img
-              src={stickyComponent}
-              alt="Luxury Product"
-              className="w-full  md:h-[90vh] object-cover max-h-[400px] md:max-h-none"
-            />
+            <video
+              src="/stickyBgVideo.mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              className="w-full md:h-[90vh] object-cover max-h-[400px] md:max-h-none"
+            ></video>
           </div>
         </div>
 
