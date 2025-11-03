@@ -113,10 +113,10 @@ function Products() {
     <div
       ref={productsRef}
       id="Products"
-      className=" overflow-x-hidden pt-28 pb-16 font-lato"
+      className=" overflow-x-hidden py-20 px-4 sm:px-8 md:px-20 lg:px-32 font-lato "
     >
       {/* container */}
-      <div className="flex flex-col gap-12 px-8 max-w-[1800px] mx-auto">
+      <div className="flex flex-col gap-12 max-w-[1800px] mx-auto">
         {/* head */}
         <div ref={titlepRef} className="flex items-start justify-between">
           <div>
@@ -133,7 +133,7 @@ function Products() {
         {/* product wrapper */}
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {/* Product 1 */}
-          <div ref={product1} className="bg-white flex flex-col items-center">
+          <div ref={product1} className=" flex flex-col items-center">
             <div className="w-full aspect-[3/4] overflow-hidden  mb-2">
               <img
                 src={perfume}
@@ -156,7 +156,7 @@ function Products() {
           </div>
 
           {/* Product 2 */}
-          <div ref={product2} className="bg-white flex flex-col items-center">
+          <div ref={product2} className=" flex flex-col items-center">
             <div className="w-full aspect-[3/4] overflow-hidden  mb-3">
               <img
                 src={bag}
@@ -179,7 +179,7 @@ function Products() {
           </div>
 
           {/* Product 3 */}
-          <div ref={product3} className="bg-white flex flex-col items-center">
+          <div ref={product3} className=" flex flex-col items-center">
             <div className="w-full aspect-[3/4] overflow-hidden  mb-3">
               <img
                 src={purse}
@@ -201,7 +201,7 @@ function Products() {
             </div>
           </div>
           {/* Product 4 */}
-          <div ref={product4} className="bg-white flex flex-col items-center">
+          <div ref={product4} className=" flex flex-col items-center">
             <div className="w-full aspect-[3/4] overflow-hidden  mb-3">
               <img
                 src={shoe}

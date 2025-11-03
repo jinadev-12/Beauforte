@@ -13,7 +13,7 @@ function Sticky() {
   return (
     <div className="max-w-[1800px] mx-auto">
       {/* container */}
-      <div className="flex flex-col md:flex-row gap-0 md:gap-2 mt-16 ">
+      <div className="max-w-[1800px] mx-auto flex flex-col md:flex-row gap-0 md:gap-2 ">
         {/* LEFT: sticky image */}
         <div className="w-full object-contain md:w-1/2 md:relative">
           <div className="md:sticky md:top-[5vh] md:h-[90vh] ">
@@ -104,7 +104,6 @@ function Sticky() {
             />
           </div>
         </div>
-        
       </div>
     </div>
   );

@@ -33,17 +33,13 @@ function LuxuryHomeSection() {
     <section
       ref={sectionRef}
       id="LuxuryHome"
-      className="relative w-full h-[100vh] overflow-hidden font-playfair text-gray-100"
+      className="relative w-full h-[100vh] overflow-hidden font-playfair bg-center bg-cover bg-no-repeat"
+      style={{
+        backgroundImage: `url(${heroBG})`,
+      }}
     >
-      {/* Background Image */}
-      <img
-        src={heroBG}
-        alt="Luxury Home Background"
-        className="absolute inset-0 -z-10 w-full h-full object-cover"
-      />
-
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/60 -z-10"></div>
+      <div className="absolute inset-0 bg-black/30 -z-10"></div>
 
       {/* Content */}
       <div
@@ -51,7 +47,7 @@ function LuxuryHomeSection() {
         className="relative h-full z-10 flex flex-col items-center justify-center px-6 text-center pt-44"
       >
         {/* Title */}
-        <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl leading-tight uppercase tracking-wider">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight uppercase tracking-wider">
           {/* Gold gradient for DESIGN */}
           <div className="bg-gradient-to-r from-[#b8860b] via-[#d4af37] to-[#8b7500] bg-clip-text text-transparent">
             {/* White gradient for TIMELESS */}
@@ -65,10 +61,10 @@ function LuxuryHomeSection() {
           <div className="bg-gradient-to-r from-white via-[#e0e0e0] to-[#bfbfbf] bg-clip-text text-transparent">
             MODERN FREEDOM.
           </div>
-        </h2>
+        </h1>
 
         {/* Paragraph */}
-        <p className="mt-6 text-base md:text-lg max-w-3xl text-neutral-400 font-lato leading-relaxed">
+        <p className="mt-6 text-base md:text-lg max-w-3xl text-neutral-100 font-lato leading-relaxed">
           Indulge in an experience where artistry meets innovation. Our spaces
           redefine luxury — blending timeless craftsmanship with the freedom of
           modern living.
@@ -76,7 +72,7 @@ function LuxuryHomeSection() {
 
         {/* Luxury Button */}
         <button
-          className="mt-8 px-6 py-3 md:px-8 md:py-4 font-lato tracking-[0.2em] text-sm uppercase rounded 
+          className="mt-8 px-6 py-3 font-lato tracking-[0.2em] text-xs lg:text-sm uppercase 
   bg-gradient-to-r from-[#b8860b] via-[#d4af37] to-[#8b7500] 
   text-black font-medium 
   shadow-[0_0_25px_rgba(212,175,55,0.3)] 

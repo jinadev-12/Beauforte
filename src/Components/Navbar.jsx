@@ -1,52 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import logoWhite from "../Assets/logoBlack.png";
 
 function Navbar() {
-
   const [isOpen, setIsOpen] = useState(false);
-  const sidebaropen = () => setIsOpen(!isOpen);
-
-
-  const [hidden, setHidden] = useState(false);
-  const lastScrollY = useRef(0);
-  const rafRef = useRef(null);
-  const SCROLL_UP_THRESHOLD = 30;
-
-
-  // Hide/show on scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      if (rafRef.current) return;
-      rafRef.current = window.requestAnimationFrame(() => {
-        const currentY = window.scrollY;
-        const delta = currentY - lastScrollY.current;
-
-        if (currentY < 40) {
-          setHidden(false);
-        } else if (delta > 0) {
-          setHidden(true);
-        } else if (delta < -SCROLL_UP_THRESHOLD) {
-          setHidden(false);
-        }
-
-        lastScrollY.current = currentY;
-        rafRef.current = null;
-      });
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (rafRef.current) cancelAnimationFrame(rafRef.current);
-    };
-  }, []);
+  const toggleSidebar = () => setIsOpen(!isOpen);
 
   return (
-    <header
-      className={`fixed top-0 left-0 w-full z-50 transition-transform duration-500 ${
-        hidden ? "-translate-y-full" : "translate-y-0"
-      } bg-[#111111c0] backdrop-blur-sm`}
-    >
-      <nav className="max-w-[1600px] mx-auto w-[90%] flex justify-between items-center py-3 md:py-4 text-white font-lato">
+    <header className="absolute top-0 z-50 right-0 w-full">
+      <nav className="max-w-[1600px] mx-auto w-[90%] flex justify-between items-center text-white font-lato h-16 md:h-20 relative">
         {/* Logo */}
         <a href="#Home" className="flex items-center gap-3">
           {/* <img src={logoWhite} alt="Beauforte Logo" className="w-10 h-12" /> */}
@@ -56,7 +17,7 @@ function Navbar() {
         </a>
 
         {/* Desktop Links */}
-        <ul className="hidden md:flex gap-10 text-sm tracking-[0.15em] font-playfair">
+        <ul className="hidden md:flex gap-10 text-base md:text-lg tracking-[0.15em]">
           {["Home", "Products", "FAQ", "Contact Us"].map((item) => (
             <li key={item}>
               <a
@@ -69,46 +30,36 @@ function Navbar() {
           ))}
         </ul>
 
-        {/* Mobile Menu Button (left for your custom sidebar) */}
+        {/* Mobile Menu Button / Close Button */}
         <button
-          aria-label="Open menu"
-          className="block md:hidden font-light text-xl sm:text-2xl"
-        >
-          <i class="ri-menu-5-line" onClick={sidebaropen}></i>
-        </button>
-
-        {/* sidebar */}
-        <div
-          className={`fixed  bg-white top-0 right-0 w-full h-[100vh] text-black flex justify-start text-left  pt-14  ${
-            isOpen ? "translate-y-0" : "-translate-y-full"
-          }  lg:hidden duration-300 z-40`}
+          aria-label="Toggle menu"
+          className="block md:hidden font-light text-2xl absolute top-5 right-0 z-[60] text-white"
+          onClick={toggleSidebar}
         >
           <i
-            class="ri-close-large-line absolute top-10 right-10 text-xl text-black"
-            onClick={sidebaropen}
+            className={`${
+              isOpen ? "ri-close-large-line text-black" : "ri-menu-5-line"
+            } transition-all duration-300`}
           ></i>
-          <ul className="flex flex-col gap-14 text-2xl font-medium font-saira mt-10 ml-5">
-            <li>
-              <a href="#home" onClick={() => setIsOpen(false)}>
-                Home
-              </a>
-            </li>
+        </button>
 
-            <li>
-              <a href="#Products" onClick={() => setIsOpen(false)}>
-                Products
-              </a>
-            </li>
-            <li>
-              <a href="#FAQ" onClick={() => setIsOpen(false)}>
-                FAQ
-              </a>
-            </li>
-            <li>
-              <a href="#Contact-Us" onClick={() => setIsOpen(false)}>
-                Contact Us
-              </a>
-            </li>
+        {/* Sidebar */}
+        <div
+          className={`fixed bg-white top-0 right-0 w-full h-[100vh] text-black flex justify-start text-left pt-14 transition-transform duration-300 z-50 ${
+            isOpen ? "translate-y-0" : "-translate-y-full"
+          } lg:hidden`}
+        >
+          <ul className="flex flex-col gap-14 text-2xl font-medium font-saira mt-10 ml-5">
+            {["Home", "Products", "FAQ", "Contact Us"].map((item) => (
+              <li key={item}>
+                <a
+                  href={`#${item.replace(/\s+/g, "-")}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
       </nav>
