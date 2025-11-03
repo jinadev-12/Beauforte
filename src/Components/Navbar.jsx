@@ -49,7 +49,7 @@ function Navbar() {
         </a>
 
         {/* Desktop Links */}
-        <ul className="hidden md:flex gap-10 text-sm tracking-[0.15em]">
+        <ul className="hidden md:flex gap-10 text-sm tracking-[0.15em] font-playfair">
           {["Home", "Products", "FAQ", "Contact Us"].map((item) => (
             <li key={item}>
               <a
