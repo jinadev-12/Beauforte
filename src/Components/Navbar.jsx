@@ -2,9 +2,16 @@ import React, { useState, useEffect, useRef } from "react";
 import logoWhite from "../Assets/logoBlack.png";
 
 function Navbar() {
+
+  const [isOpen, setIsOpen] = useState(false);
+  const sidebaropen = () => setIsOpen(!isOpen);
+
+
   const [hidden, setHidden] = useState(false);
   const lastScrollY = useRef(0);
   const rafRef = useRef(null);
+  const SCROLL_UP_THRESHOLD = 30;
+
 
   // Hide/show on scroll
   useEffect(() => {
@@ -18,7 +25,7 @@ function Navbar() {
           setHidden(false);
         } else if (delta > 0) {
           setHidden(true);
-        } else if (delta < 0) {
+        } else if (delta < -SCROLL_UP_THRESHOLD) {
           setHidden(false);
         }
 
@@ -67,8 +74,43 @@ function Navbar() {
           aria-label="Open menu"
           className="block md:hidden font-light text-xl sm:text-2xl"
         >
-          <i class="ri-menu-5-line"></i>
+          <i class="ri-menu-5-line" onClick={sidebaropen}></i>
         </button>
+
+        {/* sidebar */}
+        <div
+          className={`fixed  bg-white top-0 right-0 w-full h-[100vh] text-black flex justify-start text-left  pt-14  ${
+            isOpen ? "translate-y-0" : "-translate-y-full"
+          }  lg:hidden duration-300 z-40`}
+        >
+          <i
+            class="ri-close-large-line absolute top-10 right-10 text-xl text-black"
+            onClick={sidebaropen}
+          ></i>
+          <ul className="flex flex-col gap-14 text-2xl font-medium font-saira mt-10 ml-5">
+            <li>
+              <a href="#home" onClick={() => setIsOpen(false)}>
+                Home
+              </a>
+            </li>
+
+            <li>
+              <a href="#Products" onClick={() => setIsOpen(false)}>
+                Products
+              </a>
+            </li>
+            <li>
+              <a href="#FAQ" onClick={() => setIsOpen(false)}>
+                FAQ
+              </a>
+            </li>
+            <li>
+              <a href="#Contact-Us" onClick={() => setIsOpen(false)}>
+                Contact Us
+              </a>
+            </li>
+          </ul>
+        </div>
       </nav>
     </header>
   );
