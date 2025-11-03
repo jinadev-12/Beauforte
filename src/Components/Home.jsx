@@ -39,12 +39,12 @@ function LuxuryHomeSection() {
       }}
     >
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/30 -z-10"></div>
+      <div className="absolute inset-0 bg-black/50 z-10"></div>
 
       {/* Content */}
       <div
         ref={contentRef}
-        className="relative h-full z-10 flex flex-col items-center justify-center px-6 text-center pt-44"
+        className="relative h-full z-10 flex flex-col items-center justify-center px-6 text-center pt-10"
       >
         {/* Title */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight uppercase tracking-wider">
